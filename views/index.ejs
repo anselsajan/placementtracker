@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard - Smart Tracker</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dashboard-body">
+  <header class="dashboard-header">
+    <h1>Smart Internship & Placement Tracker</h1>
+    <div class="header-actions">
+      <a href="/add" class="add-btn">+ Add Opportunity</a>
+      <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+  </header>
+
+  <div class="dashboard-content">
+    <% if (opportunities.length === 0) { %>
+      <p class="no-data">No opportunities found. Click "Add Opportunity" to create one!</p>
+    <% } else { %>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Role</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Deadline</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% opportunities.forEach(op => { %>
+          <tr>
+            <td><%= op.company %></td>
+            <td><%= op.role %></td>
+            <td><%= op.type %></td>
+            <td><%= op.status %></td>
+            <td><%= op.deadline ? op.deadline.toDateString() : '' %></td>
+            <td>
+              <a href="/edit/<%= op._id %>" class="edit-btn">Edit</a>
+              <form action="/delete/<%= op._id %>" method="POST" style="display:inline">
+                <button type="submit" class="delete-btn">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <% } %>
+  </div>
+</body>
+</html>

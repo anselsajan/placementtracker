@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Opportunity</title></head>
+<body>
+    <h2>Edit Opportunity</h2>
+    <form action="/edit/<%= opportunity._id %>" method="POST">
+        <input name="company" value="<%= opportunity.company %>" required><br>
+        <input name="role" value="<%= opportunity.role %>" required><br>
+        <select name="type">
+            <option <%= opportunity.type === "Internship" ? "selected" : "" %>>Internship</option>
+            <option <%= opportunity.type === "Placement" ? "selected" : "" %>>Placement</option>
+        </select><br>
+        <input name="deadline" type="date" value="<%= opportunity.deadline ? opportunity.deadline.toISOString().split('T')[0] : '' %>"><br>
+        <select name="status">
+            <option <%= opportunity.status === "Not Applied" ? "selected" : "" %>>Not Applied</option>
+            <option <%= opportunity.status === "Applied" ? "selected" : "" %>>Applied</option>
+            <option <%= opportunity.status === "Interviewed" ? "selected" : "" %>>Interviewed</option>
+            <option <%= opportunity.status === "Offered" ? "selected" : "" %>>Offered</option>
+            <option <%= opportunity.status === "Rejected" ? "selected" : "" %>>Rejected</option>
+        </select><br>
+        <input name="link" value="<%= opportunity.link %>"><br>
+        <textarea name="notes"><%= opportunity.notes %></textarea><br>
+        <button type="submit">Update</button>
+    </form>
+    <a href="/">Back</a>
+</body>
+</html>

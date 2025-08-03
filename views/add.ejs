@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Opportunity</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 15px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Add Opportunity</h2>
+    <form action="/add" method="POST">
+      <input name="company" placeholder="Company" required>
+      <input name="role" placeholder="Role" required>
+      <select name="type" required>
+        <option value="Internship">Internship</option>
+        <option value="Placement">Placement</option>
+      </select>
+      <input type="date" name="deadline" placeholder="Deadline">
+      <select name="status">
+        <option>Not Applied</option>
+        <option>Applied</option>
+        <option>Interviewed</option>
+        <option>Offered</option>
+        <option>Rejected</option>
+      </select>
+      <input name="link" placeholder="Application Link">
+      <textarea name="notes" placeholder="Notes (optional)"></textarea>
+      <button type="submit">Add Opportunity</button>
+    </form>
+    <a class="back-link" href="/">← Back to Dashboard</a>
+  </div>
+</body>
+</html>
